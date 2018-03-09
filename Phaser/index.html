@@ -3,13 +3,24 @@
 <head>
     <meta charset="utf-8"/>
     <script src="phaser.min.js"></script>
-    <script src="index.js"></script>
+    <script src="src/boot.js"></script>
+    <script src="src/preload.js"></script>
+    <script src="src/gametitle.js"></script>
+    <script src="src/thegame.js"></script>
+    <script src="src.gameover.js"></script>
     </head>
     <body>
     <script>
-        var game = new Phaser.Game(2000,500);
-        this.game.state.add("main",mainState);
-        this.game.state.start("main");
+        (function() {
+            var game = new Phaser.Game(2000,500,
+            Phaser.CANVAS,"game");
+            this.game.state.add("Boot", boot);
+            this.game.state.add("Preload", preload);
+            this.game.state.add("GameTitle", gameTitle);
+            this.game.state.add("TheGame", theGame);
+            this.game.state.add("GameOver", gameOver);
+        this.game.state.start("Boot");
+        })
         </script>
     </body>
 </html>
